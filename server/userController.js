@@ -2,50 +2,10 @@ const bcrypt = require('bcrypt');
 
 module.exports = {
   signup: (req, res) => {
-    const {email, password} = req.body
-    saltRounds = 10
-    bcrypt.hash(password, saltRounds, (err, passwordHash)  => {
-      if(!err) {
-        let newDatabaseEntry = {}
-        newDatabaseEntry.email = email
-        newDatabaseEntry.password = passwordHash
-        newDatabaseEntry.destiny = destinies[Math.floor(Math.random() * destinies.length)]
-        console.log('\nNew database entry:')
-        console.log(newDatabaseEntry)
-        database.push(newDatabaseEntry)
-        res.status(200).send({success: true});
-      } else {
-        console.log('Error during bycrypt.hash(): ' + err);
-        res.status(400).send({success: false});
-      }
-    })
-
+    //code here
   },
   login: (req, res) => {
-    const {email, password} = req.body
-    let userData
-
-    for (let i=0; i<database.length; i++) {
-      if (email === database[i].email) {
-        userData = database[i]
-      }
-    }
-
-    if (!userData) {
-      res.status(200).send({success: false});
-    } else {
-      bcrypt.compare(password, userData.password, function(err, result) {
-        if(!err) {
-          const destinyIntro = 'Your final destiny is to '
-          res.status(200).send({success: true, destiny: userData.destiny, intro: destinyIntro});
-        } else {
-          console.log('Error during bycrypt.compare(): ' + err);
-          res.status(400).send({success: false});
-        }
-      })
-    }
-
-    
+    //code here
   }
 }
 
